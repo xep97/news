@@ -2,7 +2,6 @@
 import { supabase } from "../../../../lib/supabaseClient";
 
 export default async function ArticlePage({ params }) {
-  // Unwrap params if it's a promise
   const { id: postId } = await params;
 
   // Fetch the article
@@ -17,7 +16,7 @@ export default async function ArticlePage({ params }) {
     return <p>Article not found.</p>;
   }
 
-  // Update visit count and last_visited
+  // Increment visit count
   await supabase
     .from("posts")
     .update({
@@ -25,6 +24,30 @@ export default async function ArticlePage({ params }) {
       last_visited: new Date().toISOString(),
     })
     .eq("id", postId);
+
+  // Get current session
+  const { data: { session } } = await supabase.auth.getSession();
+
+  let canViewContent = false;
+
+  if (session) {
+    // Fetch user profile
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("subscription_status")
+      .eq("id", session.user.id)
+      .single();
+
+    // Check if subscription is still active
+    if (profile && profile.subscription_status) {
+      const now = new Date();
+      const expiry = new Date(profile.subscription_status);
+
+      if (expiry > now) {
+        canViewContent = true;
+      }
+    }
+  }
 
   return (
     <div className="article-page">
@@ -35,7 +58,14 @@ export default async function ArticlePage({ params }) {
       {post.image && (
         <img src={post.image} alt={post.title} className="article-image" />
       )}
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+
+      {canViewContent ? (
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      ) : (
+        <p style={{ fontWeight: "bold", color: "red" }}>
+          Buy a subscription to read
+        </p>
+      )}
     </div>
   );
 }
