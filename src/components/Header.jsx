@@ -10,8 +10,7 @@ export default function Header() {
             <nav>
                 <a href="/">Home</a>
                 <a href="/dashboard">User account</a>
-                <a href="/">Contact us</a>
-                <a href="/">Log out</a>
+                <a href="/contact">Contact us</a>
             </nav>
         </header>
     </>
