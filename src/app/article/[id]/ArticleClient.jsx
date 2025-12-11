@@ -43,7 +43,7 @@ export default function ArticleClient({ post }) {
   }, []);
 
   return (
-    <div className="article-page">
+    <div className="page">
       <h1>{post.title}</h1>
       <p className="meta">
         By {post.author} • {new Date(post.created_at).toLocaleDateString()}

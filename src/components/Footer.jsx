@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div>
-        <p>Copyright me not you</p>
-    </div>
+    <footer>
+        <p>Demo website - All stories are made up AI generated</p>
+    </footer>
   )
 }

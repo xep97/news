@@ -49,24 +49,15 @@ export default function SignupPage() {
   }
 
   return (
-    <div style={{maxWidth: 480, margin: '40px auto'}}>
+    <div className='page'>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input value={name} onChange={(e) => setName(e.target.value)} required />
-        </label>
-        <br />
-        <label>
-          Email
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <br />
-        <label>
-          Password
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </label>
-        <br />
+        <label>Name</label>
+        <input value={name} onChange={(e) => setName(e.target.value)} required />
+        <label>Email</label>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label>Password</label>
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit" disabled={loading}>{loading ? 'Signing up…' : 'Sign Up'}</button>
         {error && <p style={{color: 'red'}}>{error}</p>}
       </form>
