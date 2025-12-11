@@ -47,7 +47,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="contact-page">
+    <div className="page">
       <h1>Contact Us</h1>
 
       <form onSubmit={handleSubmit} className="contact-form">

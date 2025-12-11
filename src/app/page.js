@@ -16,20 +16,18 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="home-container">
+    <>
       <header className='header'>
-        <Image 
-          src={`/cat_logo.png`}
+        <img 
+          src="/cat_logo.png"
           alt="logo"
-          height={500} 
-          width={500} 
+          className='header-cat'
         />
-        <h1>Latest Meows</h1>
       </header>
+      
       <div className="posts-grid">
         {posts.map((post) => (
-          <div key={post.id} className="post-card">
-            <Link href={`/article/${post.id}`}>
+          <Link href={`/article/${post.id}`} key={post.id} className="post-card">
               <Image 
                 src={`/${post.image}`} 
                 alt={post.title} 
@@ -37,14 +35,13 @@ export default async function HomePage() {
                 width={220}
                 className='post-image'
               />
-              <h2 className="post-title">{post.title}</h2>
-            </Link>
-            <p className="post-meta">
+              <h3 className="post-title">{post.title}</h3>
+              <p className="post-meta">
               By {post.author} | {new Date(post.created_at).toLocaleDateString()}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 }

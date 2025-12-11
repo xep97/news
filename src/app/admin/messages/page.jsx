@@ -76,7 +76,7 @@ export default function AdminMessagesPage() {
   }
 
   return (
-    <div className="admin-messages-page">
+    <div className="page">
       <h1>Admin: Messages</h1>
 
       {messages.length === 0 && <p>No messages yet.</p>}

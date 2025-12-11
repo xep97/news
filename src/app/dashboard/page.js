@@ -49,15 +49,22 @@ export default function DashboardPage() {
 
   const displayName = profile?.name || user?.email || 'User'
 
+  const deleteAccount = () => {
+    alert('not implemented yet')
+  }
+
   return (
-    <div style={{maxWidth: 640, margin:'40px auto'}}>
+    <div className='page'>
       <h1>Welcome, {displayName}!</h1>
       <p><strong>Subscription ending:</strong> {profile?.subscription_status || 'Not active'}</p>
       <p><strong>Account created:</strong> {profile?.created_date ? new Date(profile.created_date).toLocaleString() : '—'}</p>
       <p><strong>Last active:</strong> {profile?.last_active ? new Date(profile.last_active).toLocaleString() : '—'}</p>
-      <a href="/get-subscription">Get subscription</a>
-      <button onClick={handleSignOut}>Sign Out</button>
-        <a href="/admin/messages">Messages</a>
+      <div className='button-row'>
+        <a className="button" href="/get-subscription">Get subscription</a>
+        <a className="button" href="/admin/messages">Messages</a>
+        <button className="button" onClick={handleSignOut}>Sign Out</button>
+        <button className="button-critical" onClick={deleteAccount}>Delete account</button>
+      </div>  
     </div>
   )
 }

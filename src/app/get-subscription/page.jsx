@@ -97,7 +97,7 @@ export default function GetSubscriptionPage() {
   };
 
   return (
-    <div className="get-subscription-page" style={{ maxWidth: "400px", margin: "2rem auto" }}>
+    <div className="page">
       <h1>Activate Subscription</h1>
       <form onSubmit={handleSubmit}>
         <input
