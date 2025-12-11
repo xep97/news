@@ -1,6 +1,7 @@
 // app/page.js
 import { supabase } from '../../lib/supabaseClient'
 import Link from "next/link";
+import Image from 'next/image';
 
 export default async function HomePage() {
   const { data: posts, error } = await supabase
@@ -16,12 +17,26 @@ export default async function HomePage() {
 
   return (
     <div className="home-container">
-      <h1>Latest News</h1>
+      <header className='header'>
+        <Image 
+          src={`/cat_logo.png`}
+          alt="logo"
+          height={500} 
+          width={500} 
+        />
+        <h1>Latest Meows</h1>
+      </header>
       <div className="posts-grid">
         {posts.map((post) => (
           <div key={post.id} className="post-card">
-            <img src={post.image} alt={post.title} className="post-image" />
             <Link href={`/article/${post.id}`}>
+              <Image 
+                src={`/${post.image}`} 
+                alt={post.title} 
+                height={220} 
+                width={220}
+                className='post-image'
+              />
               <h2 className="post-title">{post.title}</h2>
             </Link>
             <p className="post-meta">
