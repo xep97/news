@@ -57,6 +57,7 @@ export default function DashboardPage() {
       <p><strong>Last active:</strong> {profile?.last_active ? new Date(profile.last_active).toLocaleString() : '—'}</p>
       <a href="/get-subscription">Get subscription</a>
       <button onClick={handleSignOut}>Sign Out</button>
+        <a href="/admin/messages">Messages</a>
     </div>
   )
 }

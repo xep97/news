@@ -24,7 +24,7 @@ export default async function HomePage() {
           height={500} 
           width={500} 
         />
-        <h1>Latest News</h1>
+        <h1>Latest Meows</h1>
       </header>
       <div className="posts-grid">
         {posts.map((post) => (
@@ -33,8 +33,9 @@ export default async function HomePage() {
               <Image 
                 src={`/${post.image}`} 
                 alt={post.title} 
-                height={300} 
-                width={300} 
+                height={220} 
+                width={220}
+                className='post-image'
               />
               <h2 className="post-title">{post.title}</h2>
             </Link>
