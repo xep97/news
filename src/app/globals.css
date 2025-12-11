@@ -7,6 +7,7 @@
 }
 html {
   background: black;
+  overflow-x: hidden;
 }
 body {
   font-family: sans-serif;
@@ -150,6 +151,21 @@ body {
   border-radius: 20px;
   background-color: red;
   color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+form input, form textarea, form select, form button {
+  padding: 10px;
+  border-radius: 2px;
+}
+form textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 120px;
 }
 
 
