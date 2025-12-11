@@ -52,7 +52,7 @@ export default function DashboardPage() {
   return (
     <div style={{maxWidth: 640, margin:'40px auto'}}>
       <h1>Welcome, {displayName}!</h1>
-      <p><strong>Subscription:</strong> ACTIVE - Expires {profile?.subscription_status || 'Not active'}</p>
+      <p><strong>Subscription ending:</strong> {profile?.subscription_status || 'Not active'}</p>
       <p><strong>Account created:</strong> {profile?.created_date ? new Date(profile.created_date).toLocaleString() : '—'}</p>
       <p><strong>Last active:</strong> {profile?.last_active ? new Date(profile.last_active).toLocaleString() : '—'}</p>
       <a href="/get-subscription">Get subscription</a>
