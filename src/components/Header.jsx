@@ -7,7 +7,7 @@ import { getAuthStatus } from '../../lib/auth'
 
 
 
-
+let navExp;
 
 export default function Header() {
     const [auth, setAuth] = useState({ isSignedIn: false, user: null })
@@ -17,29 +17,37 @@ export default function Header() {
     }, [])
 
     if (!auth.isSignedIn) {
-        return <p>Not signed in</p>
+        navExp = (
+            <>
+                <a href='/login'>Login</a>
+                <a href='/signup'>Signup</a>
+            </>
+        );
+    } else {
+        navExp = (
+            <>
+                <a href="/contact">Msg</a>
+                <a href="/dashboard">User</a>
+                <p>Signed in as {auth.user.email}</p>
+            </>
+        );
     }
 
-    return <p>Signed in as {auth.user.email}</p>
 
-
+    return (
+        <div className='top'>
+            <div className='wrapper'>
+                <Link href="/" className='logo'>
+                    <h2>Daily Meows</h2>
+                </Link>
+                <nav className='nav'>
+                    {navExp}
+                </nav>
+            </div>
+        </div>
+    )
+    
   
 }
 
-/*
-return (
-    <div className='top'>
-        <div className='wrapper'>
-            <Link href="/" className='logo'>
-                <h2>Daily Meows</h2>
-            </Link>
-            <nav className='nav'>
-                <a href="/contact">Msg</a>
-                <a href="/dashboard">User</a>
-                <a href="/login">Login</a>
-                <a href="/signup">Signup</a>
-            </nav>
-        </div>
-    </div>
-  )
-    */
+
