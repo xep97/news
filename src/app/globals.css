@@ -36,7 +36,19 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  /*
+  animation: nav-bg linear forwards;
+  animation-timeline: scroll();
+  */
 }
+/*
+@keyframes nav-bg {
+  0%   { background: transparent; }
+  9%   { background: transparent; }
+  10% { background: #001818; }
+  100% { background: #001818; }
+}
+*/
 .top::before {
   content: '';
   position: absolute;
@@ -81,6 +93,8 @@ body {
   to { scale: 0.2; }
 }
 
+
+
 .header {
   height: 400px;
   display: flex;
@@ -96,7 +110,9 @@ body {
   animation-timeline: scroll();
   animation-range-start: 0px;
   animation-range-end: 320px;
-  transform-origin: top left;
+  transform-origin: top center;
+  z-index: 2000;
+  position: relative;
   
 }
 
@@ -115,7 +131,8 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
-  
+  position: sticky;
+  top: 80px;
 }
 .post-card {
   color: white;

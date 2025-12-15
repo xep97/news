@@ -26,9 +26,8 @@ export default function Header() {
     } else {
         navExp = (
             <>
-                <a href="/contact">Msg</a>
-                <a href="/dashboard">User</a>
-                <p>Signed in as {auth.user.email}</p>
+                <a href="/contact">&#x2709;</a>
+                <a href="/dashboard">{auth.user.email}</a>
             </>
         );
     }

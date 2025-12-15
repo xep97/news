@@ -57,6 +57,7 @@ export default function DashboardPage() {
     <div className='page'>
       <h1>Welcome, {displayName}!</h1>
       <p><strong>Subscription ending:</strong> {profile?.subscription_status || 'Not active'}</p>
+      <p><strong>Email registered to account:</strong> {user?.email}</p>
       <p><strong>Account created:</strong> {profile?.created_date ? new Date(profile.created_date).toLocaleString() : '—'}</p>
       <p><strong>Last active:</strong> {profile?.last_active ? new Date(profile.last_active).toLocaleString() : '—'}</p>
       <div className='button-row'>
