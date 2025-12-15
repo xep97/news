@@ -1,8 +1,33 @@
+"use client";
 import React from 'react'
 import Link from 'next/link'
 
+import { useEffect, useState } from 'react'
+import { getAuthStatus } from '../../lib/auth'
+
+
+
+
+
 export default function Header() {
-  return (
+    const [auth, setAuth] = useState({ isSignedIn: false, user: null })
+
+    useEffect(() => {
+        getAuthStatus().then(setAuth)
+    }, [])
+
+    if (!auth.isSignedIn) {
+        return <p>Not signed in</p>
+    }
+
+    return <p>Signed in as {auth.user.email}</p>
+
+
+  
+}
+
+/*
+return (
     <div className='top'>
         <div className='wrapper'>
             <Link href="/" className='logo'>
@@ -17,4 +42,4 @@ export default function Header() {
         </div>
     </div>
   )
-}
+    */
